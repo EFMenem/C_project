@@ -1,17 +1,18 @@
-//compilados
+#compilados
 *.gch
 
-//ejecutables
+#ejecutables
 *.o
 
-//comprimidos
+#comprimidos
 *.zip
 
-//IDE
+#IDE
 .vscode
 
-//carpeta
+#carpeta
 *.dYSM
-//Texto
+
+#Texto
 
 *.txt
