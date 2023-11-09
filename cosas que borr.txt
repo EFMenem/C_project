@@ -1,0 +1,179 @@
+
+// PRE: --
+// POST: inicializar los agujeros para el cuadrante inferior y el campo obstaculos de la estructura juego_t agregandolos al vector obstaculos.
+void inicializar_agujeros_cuadrante_inferior (juego_t* juego){
+    int agujero = 0;
+
+    while (agujero < (MAX_AGUJEROS / CUADRANTES) ) {
+
+        juego->obstaculos[juego->tope_obstaculos].posicion.col = rand() % 19 + 1;
+        juego->obstaculos[juego->tope_obstaculos].posicion.fil = rand() % 9 + 11;
+        juego->obstaculos[juego->tope_obstaculos].tipo = AGUJERO;
+
+        if (!validar_obstaculos_y_herramientas(*juego, juego->obstaculos[juego->tope_obstaculos].posicion)) {
+            (juego->tope_obstaculos)++;
+            agujero ++;
+        }
+    }
+}
+
+// // PRE: --
+// // POST:inicializar la lechuga modificando el campo de la estructura juego y agregarla al vector ingredientes respectivo.
+// void inicializar_lechuga(juego_t* juego) {
+//     coordenada_t lechuga;
+//     bool ingrediente_inicializado = false;
+
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = LECHUGA;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+    
+//     while(ingrediente_inicializado == false) {
+//         lechuga = obtener_coordenada_aleatoria();
+
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida],lechuga) && lechuga.fil < FILA_MEDIA) {
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = lechuga;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         }
+//     } 
+// }
+
+// // PRE: --
+// // POST:inicializar el tomate modificando el campo de la estructura juego y agregarlo al vector ingredientes respectivo.
+// void inicializar_tomate(juego_t* juego){
+//     coordenada_t tomate;
+//     bool ingrediente_inicializado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = TOMATE;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+    
+//     while(ingrediente_inicializado == false) {
+//         tomate = obtener_coordenada_aleatoria();
+
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida],tomate) && tomate.fil < FILA_MEDIA){
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = tomate;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         } 
+//     }
+// }
+
+// // PRE: --
+// // POST: inicializarel jamon modificando el campo de la estructura juego y agregarlo al vector ingredientes respectivo.
+// void inicializar_jamon(juego_t* juego){
+//     coordenada_t jamon;
+//     bool ingrediente_inicializado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = JAMON;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+    
+//     while (ingrediente_inicializado == false) {    
+//         jamon = obtener_coordenada_aleatoria();
+        
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida],jamon) && jamon.fil < FILA_MEDIA) {
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = jamon;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         } 
+//     }
+// }
+
+// // PRE: --
+// // POST: inicializar el queso modificando el campo de la estructura juego y agregarlo al vector ingredientes respectivo.
+// void inicializar_queso(juego_t* juego){
+//     coordenada_t queso;
+//     bool ingrediente_inicializado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = QUESO; 
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+
+//     while(ingrediente_inicializado == false){
+//         queso = obtener_coordenada_aleatoria();
+
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida],queso) && queso.fil < FILA_MEDIA) {
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = queso;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         }
+//     }
+// }
+
+// // PRE:--
+// // POST: inicializar la masa modificando el campo de la estructura juego y agregarla al vector ingredientes respectivo.
+// void inicializar_masa (juego_t* juego) {
+//     coordenada_t masa;
+//     bool ingrediente_inicializado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = MASA;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+
+//     while(ingrediente_inicializado == false){
+//         masa = obtener_coordenada_aleatoria();
+    
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida],masa) && masa.fil > FILA_MEDIA) {
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = masa;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         }
+//     }
+// }
+
+// // PRE:--
+// // POST: inicializar el pan modificando el campo de la estructura juego y agregarlo al vector ingredientes respectivo.
+// void inicializar_pan(juego_t* juego){
+//     coordenada_t pan;
+//     bool ingrediente_inicializado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = PAN;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+
+//     while(ingrediente_inicializado == false){
+//         pan = obtener_coordenada_aleatoria();
+    
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida],pan) && pan.fil < FILA_MEDIA) {
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = pan;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         }
+//     }
+// }
+
+// // PRE:--
+// // POST: inicializar la carne modificando el campo de la estructura juego y agregarla al vector ingredientes respectivo.
+// void inicializar_carne(juego_t* juego){
+//     coordenada_t carne;
+//     bool ingrediente_inicializado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = CARNE;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+    
+//     while (ingrediente_inicializado == false){
+//         carne = obtener_coordenada_aleatoria();
+        
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida],carne) && carne.fil > FILA_MEDIA) {
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = carne;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         }   
+//     } 
+// }
+
+// // PRE:--
+// // POST: inicializar la milanesa modificando el campo de la estructura juego y agregarla al vector ingredientes respectivo.
+// void inicializar_milanesa(juego_t* juego){
+//     coordenada_t milanesa;
+//     bool ingrediente_inicializado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].tipo = MILANESA;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cocinado = false;
+//     juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].esta_cortado = false;
+
+//     while(ingrediente_inicializado == false) {
+//         milanesa = obtener_coordenada_aleatoria();
+    
+//         if (!validacion_universal(*juego,juego->comida[juego->tope_comida], milanesa) && milanesa.fil > FILA_MEDIA){
+//             juego->comida[juego->tope_comida].ingrediente[juego->comida[juego->tope_comida].tope_ingredientes].posicion = milanesa;
+//             (juego->comida[juego->tope_comida].tope_ingredientes)++;
+//             ingrediente_inicializado = true;
+//         }
+//     }
+// }
